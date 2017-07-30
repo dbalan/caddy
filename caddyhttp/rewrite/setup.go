@@ -90,7 +90,8 @@ func rewriteParse(c *caddy.Controller) ([]httpserver.HandlerConfig, error) {
 			if to == "" {
 				return nil, c.ArgErr()
 			}
-			if rule, err = NewComplexRule(base, pattern, to, ext, matcher); err != nil {
+			rule, err = NewComplexRule(base, pattern, to, ext, matcher)
+			if err != nil {
 				return nil, err
 			}
 			rules = append(rules, rule)
